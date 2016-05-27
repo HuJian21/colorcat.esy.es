@@ -1,0 +1,49 @@
+body {
+	background: url('../images/bg2.jpg') no-repeat;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+.content {
+	float: left;
+	width: 652px;
+	border-right: 2px solid RGB(236,236,236);
+	padding: 0 20px 0 20px;
+}
+.content li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+.profile {
+	float: right;
+	width: 246px;
+	padding-left: 20px;
+}
+.container {
+	padding-bottom: 50px; 
+	/*background: url('../images/5.jpg') no-repeat;*/
+	/*background-size: cover;*/
+	background: rgba(0,0,0,0);
+	/*background: rgba(255,255,255,0.6);*/
+}
+.content a:link, .content a:visited{
+    color: blue;
+}
+.content a:hover, .content a:active {
+    text-decoration: underline;
+}
+.header {
+	width: 100%;
+	background: white;
+}
+.bg {
+	width: 100%;
+	height: calc(100% - 80px);
+	background: rgba(255,255,255,0.6);
+/*	background: url('../images/bg18.jpg') no-repeat;
+	background-size: cover;*/
+}
+.ds-thread {
+	
+}

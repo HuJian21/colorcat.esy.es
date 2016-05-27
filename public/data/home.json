@@ -1,0 +1,54 @@
+{
+	"mobileinfos": [
+		{
+			"goods_name" :"iPhone6s",
+			"goods_info": "A1700",
+			"goods_price": "4679.00",
+			"goods_imgsrc": "/res/image/goods.jpg"
+		},
+		{
+			"goods_name" :"iPhone5sssss",
+			"goods_info": "A1300",
+			"goods_price": "2279.00",
+			"goods_imgsrc": "/res/image/goods.jpg"
+		},
+		{
+			"goods_name" :"iPhone4s",
+			"goods_info": "A1123",
+			"goods_price": "1179.00",
+			"goods_imgsrc": "/res/image/goods.jpg"
+		},
+		{
+			"goods_name" :"Samsung S6",
+			"goods_info": "I9600",
+			"goods_price": "3279.00",
+			"goods_imgsrc": "/res/image/goods.jpg"
+		},
+		{
+			"goods_name" :"Samsung S4",
+			"goods_info": "I9300",
+			"goods_price": "1379.00",
+			"goods_imgsrc": "/res/image/goods.jpg"
+		},
+		{
+			"goods_name" :"Samsung S5",
+			"goods_info": "I9500",
+			"goods_price": "1579.00",
+			"goods_imgsrc": "/res/image/goods.jpg"
+		}
+	],
+	"bannerImg": [
+		{
+			"bannerimgsrc": "/res/image/banner1.jpg",
+			"title": "title1"
+		},
+		{
+			"bannerimgsrc": "/res/image/banner2.jpg",
+			"title": "title2"
+		},
+		{
+			"bannerimgsrc": "/res/image/banner3.jpg",
+			"title": "title3"
+		}
+	]
+}

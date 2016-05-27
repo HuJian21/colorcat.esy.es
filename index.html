@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="bitbug_favicon.ico">
+	<title>HuJian的个人主页</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage callback function." />
+	<meta name="keywords"  content="fullpage,jquery,demo,callbac,function,event" />
+	<meta name="Resource-type" content="Document" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+
+	<link rel="stylesheet" type="text/css" href="public/stylesheets/lib/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="public/stylesheets/index.css" />
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="public/javascripts/lib/jquery-2.1.4.js"></script>
+	<script src="public/javascripts/lib/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="public/javascripts/lib/jquery.fullPage.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+				menu: '#menu',
+				afterLoad: function(anchorLink, index){
+
+					//section 2
+					if(index == 2){
+						//moving the image
+						$('#section1').find('img').delay(500).animate({
+							left: '0%'
+						}, 1500, 'easeOutExpo');
+
+						$('#section1').find('p').first().fadeIn(1800, function(){
+							$('#section1').find('p').last().fadeIn(1800);
+						});;
+
+						// $('.logo').css('color', 'RGB(121,128,50)');
+
+					}
+
+					//section 3
+					if(anchorLink == '3rdPage'){
+						//moving the image
+						$('#section2').find('.intro').delay(500).animate({
+							left: '0%'
+						}, 1500, 'easeOutExpo');
+					}
+				}
+			});
+
+		});
+	</script>
+
+	<style>
+		#section1 img{
+			left: 130%;
+			position:relative;
+		}
+		#section1 p{
+			display:none;
+		}
+		#section2 .intro{
+			left: -130%;
+			position:relative;
+		}
+	</style>
+
+</head>
+<body>
+<nav class="nav">
+    <span class="logo">
+        <!-- HuJian -->
+        <span class="logo-color-0">H</span>
+        <span class="logo-color-1">u</span>
+        <span class="logo-color-2">J</span>
+        <span class="logo-color-3">i</span>
+        <span class="logo-color-4">a</span>
+        <span class="logo-color-5">n</span>
+    </span>
+	<ul>
+		<li><a href="index.html" class="nav-index-text">首页</a></li>
+		<li><a href="public/views/read.html">读书</a></li>
+		<li><a href="public/views/music.html">音乐</a></li>
+		<li><a href="public/views/moive.html">电影</a></li>
+		<li><a href="public/views/demo.html">Demo</a></li>
+		<li><a href="public/views/me.html">个人信息</a></li>	  
+		<li><a href="public/views/about.html">关于</a></li>
+	</ul>
+</nav>
+<div id="fullpage">
+	<div class="section " id="section0">
+		<h1 class="section0-title">Hi! Welcome!</h1>
+		<!-- <p>欢迎来到HuJian的主页，查看简历请点击个人信息，查看demo请点击demo</p> -->
+	</div>
+	<div class="section" id="section1">
+		<div class="intro section1-title">
+			<img class="dog" src="public/images/dog.jpg" alt="Cool" />
+			<h1>I'm HuJian!</h1>
+			<p class="section-smalltitle">这是我新建的一个个人页</p>
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="intro section2-title">
+			<h1>Please click top nav know more!</h1>
+			<p>这个页面用jquery.fullpage建立</p>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

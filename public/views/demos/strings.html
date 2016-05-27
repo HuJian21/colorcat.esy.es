@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>字符串处理</title>
+<style>
+body{background:rgba(224,224,224,1.00); }
+li{list-style-type:none; }
+.wrap{margin:20px auto;}
+.div{position:relative; width:550px; }
+p{text-indent:2em; text-justify:inter-cluster; text-align:justify; width:400px; border:10px rgba(204,204,204,1.00) solid; padding:20px; background:rgba(255,255,255,1.00); }
+.fun{ display:inline-block; width:80px; height:30px; background:rgba(184,184,184,1.00); color:rgba(255,255,255,1.00); text-align:center; line-height:30px; font-size:18px; cursor:pointer; text-decoration:none; }
+.unfold{position:absolute; top:0; left:462px; }
+.found{position:absolute; top:32px; display:none; left:462px; }
+.replace{position:absolute; top:64px; display:none; left:462px; }
+.fundiv{ display:none; width:440px; height:120px; background:rgba(201,221,244,1.00); border:rgba(204,204,204,1.00) 10px solid; }
+.options{width:400px; margin:20px; border-bottom:2px rgba(179,179,179,1.00) solid;}
+.input{margin-left:20px; }
+a:hover,a:active {background:rgba(197,27,2,1.00); }
+#foundinput{display:none; }
+span{background:rgba(243,166,0,1.00); }
+</style>
+<script>
+window.onload = function (){
+	var oUnfold = document.getElementById('unfold');
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aFun = oUl.getElementsByTagName('a');
+	var funDiv = document.getElementById('fundiv');
+	var foundInp = document.getElementById('foundinput');
+	var replaceInp = document.getElementById('replaceinput');
+	var subaFun = funDiv.getElementsByTagName('a');
+	var aInp = document.getElementsByTagName('input');
+	var oP = document.getElementsByTagName('p')[0];
+	var backup = oP.innerHTML;
+	
+	var offOn = true;
+	var str = '';
+	var arr = [];
+	var pos = 0;
+	
+	
+	oUnfold.onclick = function (){
+		
+		for (var i=0;i<aFun.length;i++){
+			if (offOn){
+				aFun[i].style.display = 'block';
+				oUnfold.innerHTML = '收缩';
+			    }
+			else {
+				aFun[i].style.display = 'none';
+				oUnfold.innerHTML = '展开';
+				}
+		}
+		offOn = !offOn;
+	}
+	
+	aFun[0].onclick = function (){	
+		offOn = true;
+		changeColors();
+		}
+	aFun[1].onclick = function (){
+		offOn = false;
+		changeColors();		
+		}
+	subaFun[0].onclick = function (){
+		offOn = true;
+		changeColors();
+		}
+	subaFun[1].onclick = function (){
+		offOn = false;
+		changeColors();
+		}
+		
+    function changeColors (){
+		if (offOn){
+			funDiv.style.display = 'block';
+			replaceInp.style.display = 'none';
+		    foundInp.style.display = 'block';
+			subaFun[1].style.background = 'white';
+			subaFun[1].style.color = 'black';
+			subaFun[0].style.background = 'black';
+			subaFun[0].style.color = 'white';
+		    }
+		else {
+			funDiv.style.display = 'block';
+			foundInp.style.display = 'none';
+		    replaceInp.style.display = 'block';
+			subaFun[0].style.background = 'white';
+		    subaFun[0].style.color = 'black';
+		    subaFun[1].style.background = 'black';
+		    subaFun[1].style.color = 'white';	
+			}
+		}
+		
+	aInp[1].onclick = function (){
+		arr.length = 0;
+		if (aInp[0].value){
+			oP.innerHTML = backup;
+			str = aInp[0].value;
+			oP.innerHTML = oP.innerHTML.split(str).join('<span>'+ str +'</span>');
+			foundStr();
+		    }
+		else {
+			alert('请输入要查找的内容！');
+			}
+	
+		}	
+		
+	aInp[4].onclick = function (){
+		if (aInp[2].value&&aInp[3].value){
+			oP.innerHTML = backup;
+			str = aInp[2].value;
+			newStr = aInp[3].value;
+			oP.innerHTML = oP.innerHTML.split(str).join('<span>'+ newStr +'</span>');
+			foundStr();
+			}
+		else if (aInp[2].value&&!aInp[3].value){
+			if (confirm('确定要删除文本内容？')){
+				    //foundStr();
+					str = aInp[2].value;  
+					pos = oP.innerHTML.indexOf(str);	
+					while (pos > -1){
+						arr.push(pos);
+						pos = oP.innerHTML.indexOf(str,pos+1);
+						str = aInp[2].value;         //基本数据类型是值传递，不重新赋值得到的是''
+				        oP.innerHTML = oP.innerHTML.split(str).join('<span>'+ '' +'</span>');
+					}
+					
+					if (arr.length<=0){
+						alert('没有找到要查询的文本');
+						aInp[2].value = '';
+						}
+					
+				    
+					
+				}
+			}
+		else if (!aInp[2].value){
+			alert('请输入要替换的文本');
+			}
+	}
+	
+	function foundStr (){
+		pos = oP.innerHTML.indexOf(str);	
+		while (pos > -1){
+			arr.push(pos);
+			pos = oP.innerHTML.indexOf(str,pos+1);
+		}
+		
+		if (arr.length<=0){
+			alert('没有找到要查询的文本');
+			aInp[3].value = '';
+			aInp[2].value = '';
+			}
+		}
+	
+}
+</script>
+</head>
+
+<body>
+<div class="div wrap">
+    <p>我想在这一点上马林诺夫斯基肯定是对的——他声称，如果一个人在其妻子怀孕和分娩的时候，始终在其妻子的身边，那么在孩子出生的时候，他会有一种本能的趋势，去喜欢自己的孩子，他并断言，这是父亲对孩子产生感情的基础。他说：“父亲对于孩子的感情，最初显得几乎完全缺乏生物学上的基础，其实是可以被证明深植于自然的天赋和有机体的需要之中的。”他认为，假如在妻子怀孕的时候，他并没有陪伴在身边，则他在起初不会有喜爱小孩的天性，不过，假如习俗和社会伦理要求他陪伴母亲和小孩，那么这种天性就会发展起来，就像他在妻子怀孕期间一直陪伴在侧所产生的天性一样。在所有重要的人类关系上，凡属符合人类需要的行为，如果凭借本能的强力尚不能企及的话，社会就要借助它的道德力量强制施行，在这些野蛮社会中也是如此。风俗责令母亲们的丈夫在孩子年幼的时候照料和他们，既然按照惯例，这种风俗切合人的本能习性，那么施行起来也就没有什么困难了。</p>
+    <a href="javascript:;" class="fun unfold" id="unfold">展开</a>
+    <ul>
+        <li><a href="javascript:;" class="fun found">查找</a></li>
+        <li><a href="javascript:;" class="fun replace">替换</a></li>
+    </ul>
+    <div class="fundiv" id="fundiv">
+        <div class="options">
+              <a href="javascript:;" class="fun">查找</a>
+              <a href="javascript:;" class="fun">替换</a>
+        </div>
+        <div class="input" id="foundinput">
+            <input type="text" >
+            <input type="button" value="查找" >
+        </div>
+        <div class="input" id="replaceinput">
+            <input type="text" >
+            <input type="text" >
+            <input type="button" value="替换" >
+        </div>
+    </div>
+</div>
+</body>
+</html>

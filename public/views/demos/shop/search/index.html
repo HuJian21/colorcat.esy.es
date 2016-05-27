@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<title>商品搜索</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" href="../../../../stylesheets/demos/yyl.css" />
+<script type="text/javascript" src="../../../../javascripts/lib/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../../../../javascripts/lib/vue.js"></script>
+<script type="text/javascript">
+	$.ajax({
+			type: "get",
+			url: 'index.json',
+			dataType: 'json',
+			success: function (data) {
+				importData(data);
+			},
+			error: function () {
+				//
+			}
+		});
+
+	function importData(dataJson) {
+			var vueSerachBox = new Vue({
+				el: '#vue_serach_box',
+				data: dataJson
+			})
+		}
+
+</script>
+</head>
+<body>
+<header class="header_box">
+	<div class="header">
+		<div class="header_goback">
+			<a href="../home.html">返回</a>
+		</div>
+		<h1 class="header_title">商品搜索</h1>
+	</div>
+</header>
+<section class="search_box" id="vue_serach_box">
+	<div class="search_form">
+		<input type="text" class="search_f_words" placeholder="输入关键词" name="keywords">
+		<input type="submit" class="search_f_submit" value="搜索">
+	</div>
+	<div class="search_hotwords">
+		<!-- 这里需要做一个数值判断,如果输入的 hotwords_ 大于10 则需要重置为 1 -->
+		<template v-for="hotwords in hotwordslist">
+			<a href="#" v-bind:class="'hotwords_' + ($index%10 + 1)">{{hotwords.hotwords}}</a>
+		</template>
+	</div>
+	<div class="search_oldwords">
+		<h2>历史记录</h2>
+		<template v-for="history in historywordslist">
+			<a href="#">{{history.historywords}}</a>
+		</template>
+	</div>
+</section>
+
+<div class="btn_bottom">
+	<!-- input或div或a 均可 只要 class="btn_submit" -->
+	<input type="submit" value="清空历史记录" class="btn_submit pink">
+</div>
+</body>
+</html>

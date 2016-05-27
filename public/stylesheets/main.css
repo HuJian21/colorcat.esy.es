@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,dd,dl,h1,h2.h3,h4.h5,h6{margin:0; padding:0;}
+a{text-decoration:none;}
+p{margin:0}
+ul,li{margin:0; padding:0; list-style:none;}
+.wrap{width:960px; margin:0 auto; filter:alpha(opacity:100); opacity:1; background:#FFF;}
+img{border:none;}
+#clear{clear:both;}
+#top{ height:80px;}
+.logo{width:260px; height:80px; float:left;}
+#hujian{font-family:"华文行楷", "新宋体"; font-size:52px; text-align:left; line-height:80px; color:#F60; cursor:pointer;}
+#pic{width:260px; height:80px;}
+.login{width:700px; height:80px; color:#0099FF; font-size:24px; text-align:right; line-height:80px; float:right;}
+#header{height:50px; background:#000;}
+#header ul{margin-left:350px; width:960px;}
+#header li{float:left; color:#FFF;}
+#header a:link,#header a:visited{color:#FFF; font-size:16px; text-align:center; line-height:50px; padding:16.5px 17px; height:50px; font-family:"新宋体", "宋体";}
+#header a:hover,#header a:active{background:#F0C;}
+#footer{height:30px; background:#CCCCCC;}
+#footer span{text-align:center; line-height:30px; padding-left:45%;}
+#imgdiv{width:100%; height:425px; position:relative;}
+#imgsrc{width:100%; height:425px;}
+.content{height:350px; background:#FFF; }
+.bg{border-bottom:1px #ECECEC solid;}
+.bg2{}
+.atstyle{height:50px;  font-size:24px; color:#F60; line-height:50px;}
+.ctimgdiv{width:300px; height:300px; float:left; background:#FFF;}
+.ctimg{width:300px; height:300px; margin-top:25px;}
+.pdiv{width:660px; height:350px; background:#FFF; float:right;}
+.pdivtop{height:175px; border-bottom:1px #ECECEC solid;}
+.pdivbottom{height:175px;}
+.pdiv2{ background:#FFF;}
+.pdiv span a:link,span a:visited{color:#F60; text-align:left; margin:0;}
+.pdiv span a:hover,span a:active{text-decoration:underline;}
+.pdiv blockquote{text-align:left;}
+#prev a{position:absolute; left:50px; top:300px; filter:alpha(opacity:60); opacity:0.6; }
+#prev a:hover{filter:alpha(opacity:90); opacity:0.9; }
+#next a{position:absolute; right:50px; top:300px; filter:alpha(opacity:60); opacity:0.6; }
+#next a:hover{filter:alpha(opacity:90); opacity:0.9; }

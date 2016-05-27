@@ -1,0 +1,37 @@
+body, ol, ul, p, h1, h2, h3, h4 {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style: none; }
+
+body {
+  background-color: gray;
+}
+.title {
+  color: white;
+  margin: 30px auto;
+  width: 660px;
+  font-weight: bold; }
+
+#box {
+  position: relative;
+  margin: 30px auto;
+  overflow: hidden;
+  width: 660px;
+  height: 250px; }
+  #box ul {
+    width: 660px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1; }
+    #box ul li {
+      width: 660px;
+      position: absolute;
+      top: 0; }
+      #box ul li img {
+        width: 660px;
+        height: 250px; }
+
+/*# sourceMappingURL=accordion.css.map */

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>显示多张大图</title>
+	<script type="text/javascript" src="../../javascripts/lib/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../../javascripts/demos/showbigimg.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/demos/showbigimg.css">
+	<script type="text/javascript">
+	$(function () {
+
+		var imgTest = $('.bigimg');
+		var btnTest = $('.btn');
+		
+		showBigImg(btnTest,imgTest);
+
+	})
+		
+	</script>
+</head>
+<body>
+	<ul id="img" class="clearfix">
+		<li><img src="../../images/demos/1.jpg" alt="img1" class="bigimg"></li>
+		<li><img src="../../images/demos/2.jpg" alt="img2" class="bigimg"></li>
+		<!-- <li><img src="../../images/demos/3.jpg" alt="img3" class="bigimg"></li> -->
+		<!-- <li><img src="../../images/demos/4.jpg" alt="img3" class="bigimg"></li> -->
+		<input class="btn" type="button" value="点击放大"></input>
+	</ul>
+<p>获取图片url地址，传给showBigImg()函数，支持2-4张图片,点击上方按钮查看效果</p>
+<pre><code>
+	$(function () {
+		var imgTest = $('.bigimg');
+		var btnTest = $('.btn');
+		
+		showBigImg(btnTest,imgTest);
+	});
+
+</code></pre>
+</body>
+</html>

@@ -1,0 +1,42 @@
+table {
+  border-collapse: collapse; }
+section {
+    font-size: 1.6rem;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center; }
+
+.example1 {
+  width: 100%;
+  background-color: #F2F2F2;
+  color: blue;
+  border: 1px solid #C1C1C1;
+  margin-top: 1rem; }
+
+xmp {
+  text-align: left;
+  margin-left: -180px;
+}
+.dialoghelp, .buttons {
+	width: 900px;
+	margin: 0 auto;
+}
+.demo-title {
+	margin-top: 2rem;
+}
+.buttons {
+	margin: 2rem auto;
+}
+.buttons input {
+	padding: 10px;
+	background: rgba(0,0,0,0.6);
+	color: white;
+	border-radius: 10px;
+}
+.buttons h2 {
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=dialoghelp.css.map */

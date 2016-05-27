@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<title>首页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" href="../../../stylesheets/demos/yyl.css" />
+<script src="../../../javascripts/lib/jquery-2.1.4.js"></script>
+<script src="../../../javascripts/lib/jquery.Slider.js"></script>
+<script src="../../../javascripts/lib/jquery.touchSwipe.min.js"></script>
+<!-- <script src="/res/js/common/common.js"></script> -->
+<script type="text/javascript" src="../../../javascripts/lib/vue.js"></script>
+<!-- 预加载页面 -->
+<script type="text/javascript">
+	$.ajax({
+				type:'get',
+				dataType:'json',
+				url:'home.json',
+				success: function (data) {
+					innerData(data);
+				},
+				error: function () {
+					console.log('连接失败!');
+				}
+			});
+
+			function innerData(dataJson) {
+				var test = new Vue({
+					el: '#test',
+					data: dataJson
+				});
+			}
+</script>
+</head>
+<body id="test">
+<header class="switch_module">
+	<ul>
+		<li class="on"><a href="home.html">订货</a></li>
+		<li><a href="#">分期</a></li>
+		<li><a href="#">我的</a></li>
+	</ul>
+</header>
+<section class="switch_section">
+	<section class="shop_home_search">
+		<a href="search/index.html"><span>搜索商品</span></a>
+	</section>
+	<section class="shop_home_banner noSwipe" id="banner">
+		<div>
+			<ul>
+				<!--  使用v-for循环会导致jq滑动无效 -->
+				<li><img v-bind:src="bannerImg[0].bannerimgsrc" alt="title1"></li>
+				<li><img v-bind:src="bannerImg[1].bannerimgsrc" alt="title2"></li>
+				<li><img v-bind:src="bannerImg[2].bannerimgsrc" alt="title3"></li>
+			</ul>
+		</div>
+	</section>
+	<section class="shop_home_list">
+		<ul>
+			<li v-for="goods in mobileinfos">
+				<a href="goods/goods.html">
+					<i v-if="$index === 0" class="goods_words">热售</i>
+					<h3 class="goods_name">{{ goods.goods_name }}</h3>
+					<p class="goods_info">{{ goods.goods_info }}</p>
+					<em class="goods_price">{{ goods.goods_price }}</em>
+					<img v-bind:src="goods.goods_imgsrc" v-bind:alt="goods.goods_name" class="goods_photo">
+				</a>
+			</li>
+		</ul>
+	</section>
+	<section class="shop_home_more">
+		<a href="goods/list.html">下拉查看更多机型</a>
+	</section>
+</section>
+<script>
+$(function(){
+	// $('.goods_words').eq(0).remove();
+
+	// 左滑右滑
+	var obj = $("body");
+	obj.swipe({
+		swipeLeft:function(){
+			$(".switch_section").animate({opacity:'0'},100,function(){
+				gourl("/html/fenqi/home.html");
+			});
+		},
+		threshold:80,
+		excludedElements:"button, input, select, textarea, .noSwipe"
+	});
+	
+	//焦点图
+	$(".shop_home_banner div").MobileSlider({width:720,height:360,ftype:0});
+})
+</script>
+</body>
+</html>

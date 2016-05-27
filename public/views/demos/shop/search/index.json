@@ -1,0 +1,24 @@
+{
+	"hotwordslist": [
+		{"hotwords": "iPhone6s"},
+		{"hotwords": "iPhone6s plus"},
+		{"hotwords": "iPhone6"},
+		{"hotwords": "iPhone6 plus"},
+		{"hotwords": "iPhone5s"},
+		{"hotwords": "Samaung S7"},
+		{"hotwords": "Samasung S6"},
+		{"hotwords": "小米5"},
+		{"hotwords": "小米4"},
+		{"hotwords": "红米Note3"},
+		{"hotwords": "红米Note3"},
+		{"hotwords": "红米Note3"},
+		{"hotwords": "红米Note3"},
+		{"hotwords": "红米Note3"}
+	],
+	"historywordslist": [
+		{"historywords": "iPhone6s"},
+		{"historywords": "iPhone5s"},
+		{"historywords": "iPhone4s"},
+		{"historywords": "小米5"}
+	]
+}

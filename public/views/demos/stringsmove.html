@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文字搬运工</title>
+<style>
+.div1{width:1180px; height:340px; border:10px rgba(217,217,217,1.00) solid; margin:20px auto; padding:20px; } 
+.text{width:462px; height:300px; background:rgba(255,214,96,1.00); float:left; display:block; padding:20px; } 
+a:link,a:visited{display:block; width:150px; height:50px; background:rgba(255,114,117,1.00); text-decoration:none; text-align:center; line-height:50px; color:rgba(255,255,255,1.00); font-size:24px; }
+a:hover,a:active{background:rgba(255,103,0,1.00); }
+.fun{float:left; margin:0 10px; }
+span{display:block; width:150px; height:50px; line-height:50px; text-align:center; font-size:24px; }
+p,ul{margin:0; padding:0; }
+.p1{background:rgba(113,225,248,1.00); }
+ul{opacity:0; filter:alpha(opacity=0); }
+li{list-style:none; display:block; width:15px; height:15px; float:left; background:rgba(148,252,136,1.00); margin-left:3px;  margin-top:10px;}
+.fix{margin-left:6px; }
+.title{text-align: center; font-weight: bold;}
+</style>
+<script src="../../javascripts/lib/myfunction.js"></script>
+<script>
+window.onload = function (){
+	var aBtn = document.getElementsByTagName('a')[0];
+	var Count = document.getElementsByTagName('span')[0];
+	var aLi = document.getElementsByTagName('li');
+	var oTextArea = document.getElementsByTagName('textarea')[0];
+	var oP = document.getElementsByTagName('p')[0];
+	var oUl = document.getElementsByTagName('ul')[0];
+	
+	var timer = null;
+	var num = 0;
+	
+	
+	aBtn.onclick = function (){
+		num = 0;
+		Count.innerHTML = '0/0';
+		clearInterval(timer);
+		var str = oTextArea.value;
+		doOpacity(oUl,0.1);
+		timer = setInterval(function (){
+			str_temp = str.substring(num,num+1);
+			oP.innerHTML += str_temp;
+			var newStr = str.substring(num+1);
+			//alert(newStr);
+			oTextArea.value = newStr;
+			if (str){
+				Count.innerHTML = num+1+'/'+str.length;
+				}
+			else {
+				Count.innerHTML = '0/0';
+				alert('输入的内容为空！');
+				}
+			
+			num++;	
+       		if (num>str.length-1){
+				clearInterval(timer);
+				doOpacity(oUl,-0.1);
+				}
+			},50);
+		}
+	function goto (){
+		var nummov = 0;
+		var gototimer = setInterval(function (){
+			aLi[nummov%aLi.length].style.background = 'green';
+			if (nummov>=1){
+					aLi[(nummov-1)%aLi.length].style.background = 'rgba(148,252,136,1.00)';
+				}
+			nummov++;
+		    },50);
+		}
+	goto();	
+}
+</script>
+</head>
+
+<body>
+<div class="div1 wrap">
+    <textarea class="text"></textarea>
+    <div class="fun">
+        <a href="javascript:;" class="abtn">把文字右移</a>
+        <span>0/0</span>
+        <ul>
+            <li class="fix"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <p class="text p1"></p>
+</div>
+<div class="title">在左边输入一些文字点击按钮查看效果</div>
+</body>
+</html>

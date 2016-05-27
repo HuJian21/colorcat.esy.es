@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全屏相册浏览</title>
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/demos/fullscreen.css">
+	<script type="text/javascript" src="../../javascripts/lib/myfunction.js"></script>
+	<script type="text/javascript" src="../../javascripts/demos/pictureplay.js"></script>
+</head>
+<body>
+    <!-- container -->
+	<div class="container">
+		<div class="content">
+			<div id="animate-layer"><img id="js-display" src="" /></div>
+		</div>
+	</div>
+	<!-- 底部控制栏 -->
+	<div class="controller" id="js-controller">
+		<img src="" alt="prev" class="controller-picprev">
+		<img src="" alt="next" class="controller-picnext">
+		<span class="controller-numbernow">1/12</span>
+		<span class="controller-next">>></span>
+		<span class="controller-prev"><<</span>
+		<span class="controller-play">||</span>
+		<span class="controller-modal">✿</span>
+	</div>
+	<!-- 弹出层 -->
+	<div class="modal" id="js-modal">
+		<p class="modal-title">当前相册内容</p>
+		<span id="js-close">×</span>
+		<div>
+			<ul>
+				<li><img src="../../images/demos/1.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/2.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/3.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/4.jpg" alt="panda"></li>
+			</ul>
+			<ul>
+				<li><img src="../../images/demos/5.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/6.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/7.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/8.jpg" alt="panda"></li>
+			</ul>
+			<ul>
+				<li><img src="../../images/demos/9.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/10.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/11.jpg" alt="panda"></li>
+				<li><img src="../../images/demos/12.jpg" alt="panda"></li>
+			</ul>
+		</div>
+		<p class="modal-help">按下“←”、“→”键可切换图片</p>
+		<p class="modal-copyright">by Jian</p>
+	</div>
+</body>
+</html>

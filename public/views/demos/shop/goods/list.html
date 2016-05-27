@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<title>全部手机</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" href="../../../../stylesheets/demos/yyl.css" />
+<script src="../../../../javascripts/lib/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../../../../javascripts/lib/vue.js"></script>
+<script src="../../../../javascripts/demos/goods_list.js"></script>
+<style type="text/css">
+	.clickmore {
+		height: 4rem;
+		line-height: 4rem;
+		text-align: center;
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body id="vue-body">
+<header class="header_box">
+	<div class="header">
+		<div class="header_goback">
+			<a href="../home.html">返回</a>
+		</div>
+		<h1 class="header_title">全部手机</h1>
+		<div class="header_other">
+			<div id="choose_btn" class="header_choose">
+				<span>筛选</span><i></i>
+			</div>
+		</div>
+	</div>
+</header>
+<section id="goods_select" class="goods_select">
+	<div class="goods_select_box">
+		<header>
+			<div id="goods_select_close" class="goods_select_close">关闭</div>
+			<h2>筛选</h2>
+			<a href="../search/index.html" class="so">搜索</a>
+		</header>
+		<section>
+			<dl data-value="-1" data-type="1">
+				<dt><strong>品牌</strong><span>全部</span></dt>
+				<dd>
+					<!-- 子筛选开始循环 -->
+					<div class="goods_select_son">
+						<header>
+							<div class="goods_select_close">关闭</div>
+							<h2>品牌</h2>
+						</header>
+						<section>
+							<ul>
+								<li data-value="-1" class="on">全部</li>
+								<template v-for="name in shop_screen[0].brandnames">
+									<li v-bind:data-value="$index + 1">{{name.brandname}}</li>
+								</template>
+							</ul>
+						</section>
+						<footer>
+							<div class="cancel">清除选项</div>
+							<div class="enter">确定</div>
+						</footer>
+					</div>
+					<!-- 子筛选循环结束 -->
+				</dd>
+			</dl>
+			<dl data-value="-1" data-type="2">
+				<dt><strong>价格</strong><span>全部</span></dt>
+				<dd>
+					<div class="goods_select_son">
+						<header>
+							<div class="goods_select_close">关闭</div>
+							<h2>价格</h2>
+						</header>
+						<section>
+							<ul>
+								<li data-value="-1" class="on">全部</li>
+								<template v-for="price in shop_screen[0].goods_price">
+									<li v-bind:data-value="$index + 1">{{price.price}}</li>
+								</template>
+							</ul>
+						</section>
+						<footer>
+							<div class="cancel">清除选项</div>
+							<div class="enter">确定</div>
+						</footer>
+					</div>
+				</dd>
+			</dl>
+			<dl data-value="-1" data-type="3">
+				<dt><strong>网络</strong><span>全部</span></dt>
+				<dd>
+					<div class="goods_select_son">
+							<header>
+								<div class="goods_select_close">关闭</div>
+								<h2>网络</h2>
+							</header>
+							<section>
+								<ul>
+									<li data-value="-1" class="on">全部</li>
+									<template v-for="network in shop_screen[0].network">
+										<li v-bind:data-value="$index + 1">{{network.network}}</li>
+									</template>
+								</ul>
+							</section>
+							<footer>
+								<div class="cancel">清除选项</div>
+								<div class="enter">确定</div>
+							</footer>
+					</div>
+				</dd>
+			</dl>
+			<dl data-value="-1" data-type="4">
+				<dt><strong>运营商</strong><span>全部</span></dt>
+				<dd>
+					<div class="goods_select_son">
+							<header>
+								<div class="goods_select_close">关闭</div>
+								<h2>运营商</h2>
+							</header>
+							<section>
+								<ul>
+									<li data-value="-1" class="on">全部</li>
+									<template v-for="mtc in shop_screen[0].mtc">
+										<li v-bind:data-value="$index + 1">{{mtc.mtc}}</li>
+									</template>
+								</ul>
+							</section>
+							<footer>
+								<div class="cancel">清除选项</div>
+								<div class="enter">确定</div>
+							</footer>
+					</div>
+				</dd>
+			</dl>
+			<dl data-value="-1" data-type="5">
+				<dt><strong>合约机</strong><span>全部</span></dt>
+				<dd>
+					<div class="goods_select_son">
+							<header>
+								<div class="goods_select_close">关闭</div>
+								<h2>合约机</h2>
+							</header>
+							<section>
+								<ul>
+									<li data-value="-1" class="on">全部</li>
+									<template v-for="contractMobile in shop_screen[0].contractMobile">
+										<li v-bind:data-value="$index + 1">{{contractMobile.mobile}}</li>
+									</template>
+								</ul>
+							</section>
+							<footer>
+								<div class="cancel">清除选项</div>
+								<div class="enter">确定</div>
+							</footer>
+					</div>
+				</dd>
+			</dl>
+		</section>
+		<footer>
+			<div id="goods_select_cancel" class="cancel">清除选项</div>
+			<div id="js-enter" class="enter">确定</div>
+		</footer>
+	</div>
+	<div class="bg00"></div>
+</section>
+<aside class="goods_sort">
+	<span v-on:click="changeData" class="sort_btn on">人气</span>
+	<span v-on:click="changeData" class="sort_btn">新品</span>
+	<span v-on:click="changeData" class="sort_btn">销量</span>
+	<span v-on:click="changeData" class="sort_btn sort_price_up none">价格<i></i></span>
+	<span v-on:click="changeData" class="sort_btn sort_price_down">价格<i></i></span>
+</aside>
+<section class="goods_list">
+	<ul>
+		<li v-for="goods in mobileinfos">
+			<a href="goods.html">
+				<img v-bind:src="goods.goods_imgsrc" v-bind:alt="goods.goods_name" class="goods_photo">
+				<h3 class="goods_name">{{ goods.goods_name }}</h3>
+				<p class="goods_info">{{ goods.goods_info }}</p>
+				<em class="goods_price">{{ goods.goods_price }}</em>
+			</a>
+		</li>
+	</ul>
+</section>
+<footer id="example">
+	<my-component></my-component>
+</footer>
+</body>
+<script type="text/javascript">
+
+		// 定义一个组件
+		var MyComponent = Vue.extend({
+			template: '<div class="clickmore">点击加载更多</div>'
+		})
+
+		// 注册
+		Vue.component('my-component', MyComponent)
+
+		// 创建根实例
+		new Vue({
+			el: '#example'
+		})
+
+	$(function () {
+		var vueData = null;
+		var requestUrl = 'list.json?id=1';
+		function dataRequest(url) {
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				async: false,
+				url:url,
+				success: function (data) {
+					vueData = data;
+					// console.log(vueData);
+				},
+				error: function () {
+					$('.clickmore').html('已经到底了');
+				}
+			});
+		};
+
+		dataRequest(requestUrl);
+		
+		var test = new Vue({
+			el: '#vue-body',
+			data: {
+				mobileinfos: vueData.mobileinfos,
+				bannerImg: vueData.bannerImg,
+				shop_screen: vueData.shop_screen,
+				id: 0,
+				currentPage: 0
+			},
+			methods: {
+				changeData: function (event) {
+					// 点击新tab时将页数置为0
+					this.currentPage = 0;
+					$(event.target).addClass('on').siblings().removeClass('on');
+					// 获取当前点击元素的属性，设置请求的id值，获取不同的服务器数据
+					this.id = $(this).attr('value');
+					var currentUrl = 'listnew.json?id=' + this.id + '&page=' + this.currentPage;
+					dataRequest(currentUrl);
+					this.mobileinfos = vueData.mobileinfos;
+					this.bannerImg = vueData.bannerImg;
+					this.shop_screen = vueData.shop_screen;
+				},
+				loadPage: function () {
+					// 请求数据
+					var currentUrl = 'listnew.json?id=' + this.id + '&page=' + this.currentPage;
+					dataRequest(currentUrl);
+					// 合并数据
+					var newMobileinfos = this.mobileinfos.concat(vueData.mobileinfos);
+					var newBannerImg = this.bannerImg.concat(vueData.bannerImg);
+					var newShop_screen = this.shop_screen.concat(vueData.shop_screen);
+					// 更新数据
+					this.mobileinfos = newMobileinfos;
+					this.bannerImg = newBannerImg;
+					this.shop_screen = newShop_screen;
+					// 移除tips
+					// $('#example').remove();
+				}
+			}
+		});
+
+		// 点击加载更多
+		$('#example').on('click', function () {
+			test.loadPage();
+			this.currentPage++;
+		})
+
+		// 筛选部分的JS代码
+		var timers = null;
+		$('#js-enter').on('click',function () {
+			var dlJson = {};
+			var dlValueArr = [];
+			// 获取选中的列表value与type
+			$('#goods_select dl').each(function (index) {
+				var dlValue = parseInt($(this).data('value'),10);
+				var dlType = $(this).data('type');
+				dlValueArr.push(dlValue);
+			});
+			// 将数组转化为JSON格式
+			for (var i = 1,len = dlValueArr.length; i <= len; i++) {
+				dlJson[i] = dlValueArr[i - 1];
+			}
+			var json = JSON.stringify(dlJson);
+
+
+			
+			// 延迟提交和清楚定时器防止重复提交
+			clearTimeout(timers);
+			timers = setTimeout(submitMsg,500);
+
+			function submitMsg() {
+				$.ajax({
+					type: 'post',
+					data: json,
+					url: 'www.xxx.com?id=2&page=2',
+					success: function (data) {
+						console.log(data.msg);
+					},
+					error: function (data) {
+						// console.log(data.msg);
+					}
+				});
+				console.log(json);
+			}
+
+
+
+		});
+	});
+</script>
+</html>

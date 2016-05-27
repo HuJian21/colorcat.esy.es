@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>弹窗</title>
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/demos/dialog.css">
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/demos/dialoghelp.css">
+	<script type="text/javascript" src="../../javascripts/lib/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../../javascripts/demos/dialog.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			
+			alertWindow({
+				ClickButton: $('.js-button1'),
+				content: '您的意见或建议已经提交，<br/>感谢您对我们的支持！'
+			});
+
+			alertWindow({
+				ClickButton: $('.js-button2'),
+				content: '您的意见或建议已经提交，<br/>感谢您对我们的支持！',
+				buttonNum: 2,
+				buttonText: {
+					text1: '确定',
+					text2: 'Cancel'
+				}
+			});
+
+			alertWindow({
+				// eventType: 'click',    // 触发类型click/callback
+				ClickButton: $('.js-button3'),    // 点击按钮(eventType为callback时不写)
+				Title: true,          // 布尔值 true/false
+				// titleType: 'html',
+				titleContent: '<p class="windowtitle">您将支付<span class="integral">5000积分</span>兑换商品!</p>',    // title - 字符串（可选）
+				// // contentType: 'html',    // contentType:text/html
+				content: '您的意见或建议已经提交，<br/>感谢您对我们的支持！',   // text/html － 字符串
+				buttonNum: 2,          // button的个数
+				buttonText: {
+					text1: '确定',
+					text2: 'Cancel'
+				},
+				clickFn: function () {
+					console.log('do something...');
+					$.ajax({
+						type: 'post',
+						data: '...',
+						url: 'www.xxx.com',
+						success: function (data) {
+							console.log(data.msg)
+						}
+					});
+				}
+			});
+
+		});
+	</script>
+	<style type="text/css">
+	    .integral {
+	    	color: red;
+	    }
+	</style>
+</head>
+<body>
+<section class="buttons">
+	<input type="button" value="默认弹窗" class="js-button1">
+	<input type="button" value="两个按钮的弹窗" class="js-button2">
+	<input type="button" value="带标题的弹窗" class="js-button3">
+	<h2>(Chrome浏览器请按F12打开Toggle device model点击上方三个按钮查看移动端效果)</h2>
+</section>
+<section class="dialoghelp">
+<h3 class="title">dialog使用说明</h3>
+		<p>使用前需要引用dialog.css和dialog.js文件，依赖jquery</p>
+		<article>
+			<table>
+				<tr>
+					<th>参数</th>
+					<th>值</th>
+					<th>默认设置</th>
+					<th>描述</th>
+					<th>是否可选</th>
+				</tr>
+				<tr>
+					<td>eventType</td>
+					<td>click/callback</td>
+					<td>click</td>
+					<td>触发类型: click:需要ClickButton对象触发  / callback:在一个函数完成时调用</td>
+					<th>可选</th>
+				</tr>
+				<tr>
+					<td>ClickButton</td>
+					<td>对象</td>
+					<td>--</td>
+					<td>触发对象</td>
+					<th>eventType为click时必须填写</th>
+				</tr>
+				<tr>
+					<td>Title</td>
+					<td>true/false</td>
+					<td>false</td>
+					<td>是否有标题: true:有标题 / false:无标题</td>
+					<th>可选</th>
+				</tr>
+				<tr>
+					<td>titleType</td>
+					<td>text/html</td>
+					<td>text</td>
+					<td>标题内容类型: text / html标签</td>
+					<th>可选</th>
+				</tr>
+				<tr>
+					<td>titleContent</td>
+					<td>内容</td>
+					<td>--</td>
+					<td>title的内容</td>
+					<th>有标题时必须填写</th>
+				</tr>
+				<tr>
+					<td>contentType</td>
+					<td>text/html</td>
+					<td>text</td>
+					<td>content内容类型: text / html标签</td>
+					<th>可选</th>
+				</tr>
+				<tr>
+					<td>content</td>
+					<td>内容</td>
+					<td>--</td>
+					<td>content的内容</td>
+					<th>必须填写内容</th>
+				</tr>
+				<tr>
+					<td>buttonNum</td>
+					<td>数字</td>
+					<td>1</td>
+					<td>数字代表button的个数</td>
+					<th>可选</th>
+				</tr>
+				<tr>
+					<td>buttonText</td>
+					<td>对象</td>
+					<td>buttonNum=1:确定,buttonNum=2:确定，取消</td>
+					<td>text代表按钮的文字,text1为第一个按钮，text2为第二个按钮,依次...</td>
+					<th>可选（3个以上按钮必须填写文字）</th>
+				</tr>
+				<tr>
+					<td>clickFn</td>
+					<td>函数</td>
+					<td>--</td>
+					<td>弹窗里第一个按钮点击时触发的函数</td>
+					<th>可选</th>
+				</tr>
+			</table>
+		</article>
+		<p class="demo-title">demo1: 默认的弹窗</p>
+		<div class="example1">
+			<xmp>
+				alertWindow({
+					ClickButton: $('.js-button'),
+					content: '您的意见或建议已经提交，<br/>感谢您对我们的支持！'
+				});
+			</xmp>
+			<img src="../../images/demos/default.png">
+		</div>
+		<p class="demo-title">demo2: 两个按钮的弹窗且自定义按钮文字</p>
+		<div class="example1">
+			<xmp>
+				alertWindow({
+					ClickButton: $('.js-button'),
+					content: '您的意见或建议已经提交，<br/>感谢您对我们的支持！',
+					buttonNum: 2,          // button的个数
+					buttonText: {
+						text1: '确定',
+						text2: 'Cancel',
+					}
+				});
+			</xmp>
+			<img src="../../images/demos/twodialog.png">
+		</div>	
+		<p class="demo-title">demo3: 带title且titleType为html的弹窗</p>
+		<div class="example1">
+			<xmp>
+				alertWindow({
+					ClickButton: $('.js-button'),
+					Title: true,
+					titleType: 'html',
+					titleContent: '<p class="windowtitle">您将支付<span class="integral">5000积分</span>兑换商品!</p>',
+					content: '您的意见或建议已经提交，<br/>感谢您对我们的支持！',
+					buttonNum: 2,          // button的个数
+					buttonText: {
+						text1: '确定',
+						text2: 'Cancel',
+					}
+				});
+			</xmp>
+			<img src="../../images/demos/dialoghead.png">
+		</div>	
+	</div>
+</section>
+</body>
+</html>

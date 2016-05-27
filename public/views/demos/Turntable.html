@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Turntable</title>
+	<script type="text/javascript" src="../../javascripts/lib/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../../javascripts/demos/awardRotate.js"></script>
+	<script type="text/javascript">
+		$(function () {
+
+			// lotteryNum是由后端返回的用户初始抽奖次数
+			function lottery(lotteryNum) {
+
+				$('.lotterymessage').html('您剩余抽奖次数为:' + lotteryNum + '次！');
+
+				var isRotate = false;
+				var lotteryTime = 0;     //已用抽奖次数
+				var surplusTime = lotteryNum - lotteryTime;    // 剩余抽奖次数
+
+				var doRotate = function (awards,angles,message) {
+					isRotate = !isRotate;
+					$('#rotate').stopRotate();
+					$('#rotate').rotate({
+						angle: 0,
+						animateTo: angles + 1800,
+						duration: 8000,
+						callback: function () {
+							alert(message);
+							isRotate = !isRotate;
+						}
+					});
+				}
+
+				$('.pointer').click(function () {
+					if (isRotate) {
+						return;
+					}
+					else if (surplusTime > 0){
+
+						var item = getRandomNumber(0,6);  //确定抽到哪一个
+						switch (item) {
+							case 0: 
+							    doRotate(0,337,'未中奖！');
+							    break;
+							case 1:
+							    doRotate(1,26,'免单4999！');
+							    break;
+							case 2:
+							    doRotate(2,88,'免单50！');
+							    break;
+							case 3:
+							    doRotate(3,137,'免单10！');
+							    break;
+							case 4:
+							    doRotate(4,185,'免单5！');
+							    break;
+							case 5:
+							    doRotate(5,235,'免分期服务费！');
+							    break;
+							case 7:
+							    doRotate(6,287,'提高白条额度！');
+							    break;
+						}
+						console.log(item);
+						lotteryTime++;
+						surplusTime = lotteryNum - lotteryTime;  //重新计算剩余抽奖次数
+
+						if (surplusTime < 0) {
+							surplusTime = 0;
+						}
+
+						$('.lotterymessage').html('您剩余抽奖次数为:' + surplusTime + '次！')
+					}
+
+					else if (surplusTime <= 0) {
+						alert('您的抽奖次数已经用完啦！');
+					}
+
+				});
+
+				//客户端模拟的抽奖随机数
+				function getRandomNumber(m,n) {
+					return Math.round(Math.random() * (m - n) + n);
+				}
+			}
+
+			lottery(3);
+		});
+
+	</script>
+
+	<style type="text/css">
+	    body {
+	    	background-color: RGB(235,235,237);
+	    }
+	    .turntable {
+	    	width: 650px;
+			height: 600px;
+			margin: 0 auto;
+			position: relative;
+	    }
+	    .pointer {
+	    	width: 174px;
+		    height: 228px;
+	    	position: absolute;
+	    	top: 50%;
+	    	left:50%;
+	    	margin-left: -67px;
+		    margin-top: -144px;
+		    z-index: 8;
+	    }
+	    .rotate {
+	    	width: 450px;
+			height: 450px;
+			position: absolute;
+			left: 116px;
+			top: 60px;
+	    }
+	    p {
+	    	width: 100%;
+	    	padding-left: 30px;
+	    	text-align: center;
+	    	font-size: 20px;
+	    	margin-top: -20px;
+	    }
+	</style>
+</head>
+<body>
+	<div class="turntable">
+	    <div class="pointer"><img src="../../images/demos/pointer.png" alt="pointer"/></div>
+	    <div class="rotate" ><img id="rotate" src="../../images/demos/turntable2.png" alt="turntable"/></div>
+	</div>
+	<p class="lotterymessage"></p>
+</body>
+</html>

@@ -1,0 +1,154 @@
+body,dd,dl,h1,h2.h3,h4.h5,h6{margin:0; padding:0; font-family:"微软雅黑", "新宋体", "幼圆";}
+a{text-decoration:none;}
+p{margin:0;}
+ul,li{margin:0; padding:0; list-style:none;}
+img{border:none;}
+.clear {
+	clear: both;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{*+height:1%;}
+
+.headerimg{height:175px;}
+.rnav{text-align:right;}
+.rnav li{float:right;}
+.rnav a:link,.rnav a:visited{color:#000; font-size:18px; padding:16px 0 16px 32px;}
+.rnav a:hover,.readingnav a:active{color:#F60; background:none;}
+#now{color:#F60;}
+.rctleft{width:760px; float:left;}
+.rctright{width:199px; float:right;}
+.rctli{height:auto; border-bottom:1px #ECECEC solid; color:#000;}
+.rctlileft{float:left; width:180px;}
+#rcimg{margin:30px 0;}
+.rctliright{float:left; width:580px;}
+.bod{border-bottom:1px #ECECEC solid;}
+.author{color:#999; font-size:16px;}
+.anna{margin:30px 16px;}
+.anna a:link,.anna a:visited{color:#F60; font-size:18px;}
+.anna a:hover,.anna a:active{color:#00F; text-decoration:underline;}
+.star{color:#F60;}
+.pstar{color:#999;}
+.showall{color:#F60; text-align:right; font-size:14px; cursor:pointer;}
+.showall span{color:#999; font-size:12px; font-weight:bold; padding:8px 0 0 2px;}
+.show{height:126px; overflow:hidden;}
+.fixcategory{border-bottom:2px #ECECEC solid; text-align:right; border-left:none;}
+.rctrightli a:link,.rctrightli a:visited{ border-left:1px #ECECEC solid; height:50px; text-align:center; font-size:16px; line-height:50px; padding:17px 70px 17px 70px; color:#666;}
+.rctrightli a:hover,.rctrightli a:active{background:#CCC; border-right:4px #F60 solid; padding-right:66px;}
+
+/* demo style */
+.demos-frame {
+	margin-top: 20px;
+}
+.demos-frame li {
+	border: 1px double black;
+	box-shadow: 5px 5px 5px black;
+}
+.demos-intro {
+	margin-top: 20px;
+}
+#bootstrappage, #shanhu, #tank {
+	background-size: cover;
+}
+#bootstrappage {
+	background: url('../images/demos/bootstrap.png') no-repeat;
+	background-size: cover;
+}
+#shanhu {
+	background: url('../images/demos/3.jpg') no-repeat;
+	background-size: cover;
+}
+#tank {
+	background: url('../images/demos/tank.png') no-repeat;
+	background-size: cover;
+}
+#turntable {
+	background: url('../images/demos/turntable2.png') no-repeat;
+	background-size: cover;
+}
+#marnifying {
+	background: url('../images/demos/marnifying.jpg') no-repeat;
+	background-size: cover;
+}
+#tab {
+	background: url('../images/demos/tab.jpg') no-repeat;
+	background-size: cover;
+}
+#accordion {
+	background: url('../images/demos/accordion.png') no-repeat;
+	background-size: cover;
+}
+#listsilde {
+	background: url('../images/demos/listsilde.png') no-repeat;
+	background-size: cover;
+}
+#pictureplay {
+	background: url('../images/demos/pictureplay.jpg') no-repeat;
+	background-size: cover;
+}
+#dialog {
+	background: url('../images/demos/dialoghead.png') no-repeat;
+	background-size: cover;
+}
+#strings {
+	background: url('../images/demos/strings.jpg') no-repeat;
+	background-size: cover;
+}
+#stringsmove {
+	background: url('../images/demos/stringsmove.png') no-repeat;
+	background-size: cover;
+}
+#node {
+	background: url('../images/demos/node.jpg') no-repeat;
+	background-size: cover;
+}
+#phpmysql {
+	background: url('../images/demos/phpmysql.png') no-repeat;
+	background-size: cover;
+}
+#shop {
+	background: url('../images/demos/banner1.jpg') no-repeat;
+	background-size: cover;
+}
+#showbigimg {
+	background: url('../images/demos/1.jpg') no-repeat;
+	background-size: cover;
+}
+.demos-frame li {
+	background-size: 210px 120px;
+}
+.demos a:link, .demos a:visited {
+	font-size: 16px;
+	width: 100%;
+	padding: 8px 0;
+	background: rgba(0,0,0,0.4);
+	color: white;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 0 auto;
+	transition: padding 5s;
+	transition: background 0.5s;
+}
+.demos a:hover, .demos a:active {
+	color: white;
+	padding: 50px 0;
+	background: rgba(255,102,0,0.9);
+}
+.demos {
+	position: relative;
+	float: left;
+	display: block;
+	z-index: 999;
+	width: 210px;
+	height: 120px;
+	border: 1px soild black;
+	text-align: center;
+	margin: 0 20px 20px 0;
+	transition: width 0.5s;
+}
+.demos:hover {
+	position: relative;
+	z-index: 999;
+	width: 230px;
+}

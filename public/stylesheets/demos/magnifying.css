@@ -1,0 +1,52 @@
+.js-absolute, .container .normal span, #marnifying img {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.block {
+  display: true; }
+
+.hidden {
+  display: none; }
+body {
+  background-color: RGB(235,235,237);
+}
+.container {
+  width: 212px;
+  height: 212px;
+  border: 1px solid RGB(204, 204, 204);
+  float: left; }
+  .container .normal {
+    width: 200px;
+    height: 200px;
+    margin: 6px auto;
+    position: relative; }
+    .container .normal span {
+      width: 50px;
+      height: 50px;
+      display: none;
+      background-color: black;
+      opacity: 0.3; }
+    .container .normal img {
+      width: 200px;
+      height: 200px; }
+  .container p, .container .title-jquery {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 60px; }
+  .container .title-jquery {
+    margin-left: 30px; }
+
+#marnifying {
+  width: 400px;
+  height: 400px;
+  float: left;
+  margin-left: 4px;
+  border: 2px solid RGB(204, 204, 204);
+  display: none;
+  overflow: hidden;
+  position: relative; }
+  #marnifying img {
+    width: 800px;
+    height: 800px; }
+/*# sourceMappingURL=magnifying.css.map */

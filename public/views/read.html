@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../bitbug_favicon.ico">
+<title>读书</title>
+<link href="../stylesheets/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body,dd,dl,h1,h2.h3,h4.h5,h6{margin:0; padding:0; font-family:"微软雅黑", "新宋体", "幼圆";}
+a{text-decoration:none;}
+p{margin:0;}
+ul,li{margin:0; padding:0; list-style:none;}
+img{border:none;}
+.headerimg{height:175px;}
+.rnav{text-align:right;}
+.rnav li{float:right;}
+.rnav a:link,.rnav a:visited{color:#000; font-size:18px; padding:16px 0 16px 32px;}
+.rnav a:hover,.readingnav a:active{color:#F60; background:none;}
+#now{color:#F60;}
+.rctleft{width:760px; float:left;}
+.rctright{width:199px; float:right;}
+.rctli{height:auto; border-bottom:1px #ECECEC solid; color:#000;}
+.rctlileft{float:left; width:180px;}
+#rcimg{margin:30px 0;}
+.rctliright{float:left; width:580px;}
+.bod{border-bottom:1px #ECECEC solid;}
+.author{color:#999; font-size:16px;}
+.anna{margin:30px 16px;}
+.anna a:link,.anna a:visited{color:#F60; font-size:18px;}
+.anna a:hover,.anna a:active{color:#00F; text-decoration:underline;}
+.star{color:#F60;}
+.pstar{color:#999;}
+.showall{color:#F60; text-align:right; font-size:14px; cursor:pointer;}
+.showall span{color:#999; font-size:12px; font-weight:bold; padding:8px 0 0 2px;}
+.show{height:126px; overflow:hidden;}
+.fixcategory{border-bottom:2px #ECECEC solid; text-align:right; border-left:none;}
+.rctrightli a:link,.rctrightli a:visited{ border-left:1px #ECECEC solid; height:50px; text-align:center; font-size:16px; line-height:50px; padding:17px 70px 17px 70px; color:#666;}
+.rctrightli a:hover,.rctrightli a:active{background:#CCC; border-right:4px #F60 solid; padding-right:66px;}
+</style>
+
+<script>
+
+window.onload=function(){
+	var oShow=document.getElementsByClassName('show');
+	var oShowall=document.getElementsByClassName('showall');
+	
+	var Lenshowall=oShowall.length;
+	
+	//--图片每3000毫秒变化一次--
+	var oRimg=document.getElementById('rimg');
+	var arrUrl=['../images/1.jpg','../images/2.jpg','../images/3.jpg','../images/4.jpg','../images/5.jpg'];
+	var TimeTab=3000;
+	var num=0;
+	
+	setInterval(changeimg,TimeTab);
+
+	function changeimg(){
+		if(num==arrUrl.length-1){
+			num=0;
+			}
+			else{
+				num++;
+			}
+		oRimg.src=arrUrl[num];
+		};
+		
+	//添加自定义属性开关和索引值	
+	for(var i=0;i<Lenshowall;i++){
+		oShowall[i].index=i;
+		oShowall[i].offon=true;
+	oShowall[i].onclick=function(){
+		if(this.offon){	
+		    oShow[this.index].style.height='auto';
+		    this.innerHTML='<p class="showall">'+'收起'+'<span>'+'&nbsp;'+'∧'+'</span>'+'</p>';
+		    this.offon=false;
+		}
+		else{
+			oShow[this.index].style.height='126px';
+			this.innerHTML='<p class="showall">'+'显示全部'+'<span>'+'&nbsp;'+'∨'+'</span>'+'</p>';
+			this.offon=true;
+			}
+		};
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="top" class="wrap">
+
+     <div class="logo">
+	 <p id="hujian">HuJian</p>
+	 </div>	
+      
+	 <div class="login">
+	   <ul class="rnav">     
+           <li><a href="about.html">关于</a></li>
+           <li><a href="me.html">个人信息</a></li>  
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="photo.html">相片组</a></li>
+           <li><a href="moive.html">电影</a></li>
+           <li><a href="music.html">音乐</a></li>
+           <li><a href="read.html" id="now">读书</a></li>
+           <li><a href="../../index.html">首页</a></li>
+       </ul>
+	 </div>	 
+</div>
+
+<div class="headerimg wrap">
+<img src="../images/1.jpg" height="175px"  width="960px" id="rimg"/>
+</div>
+
+<div class="rcontent wrap">
+
+    <div class="rctleft">
+    
+        <div class="atstyle bod">推荐的书</div>
+        
+        <div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/anna.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《安娜▪卡列尼娜》（译文经典）</a>
+                 <p class="author">&nbsp;&nbsp;作者:【俄】列夫·托尔斯泰</p><br />
+                 <div class="show">
+                      "《安娜·卡列尼娜》是俄国著名作家列夫·托尔斯泰的代表作品，在19世纪的世界文坛堪称首屈一指的优秀作品。本书通过女主人公安娜的追求爱情悲剧，和列文在农村面临危机而进行的改革与探索这两条线索，描绘了俄国从莫斯科到外省乡村广阔而丰富多彩的图景，先后描写了150多个人物，是一部社会百科全书式的作品。
+贵族妇女安娜追求爱情幸福，却在卡列文的虚伪、渥伦斯基的冷漠和自私面前碰得头破血流，最终落得卧轨自杀、陈尸车站的下场。庄园主列文反对土地私有制，抵制资本主义制度，同情贫苦农民，却又无法摆脱贵族习气而陷入无法解脱的矛盾之中。矛盾的时期、矛盾的制度、矛盾的人物、矛盾的心理，使全书在矛盾的漩涡中颠簸。这部小说是新旧交替时期紧张惶恐的俄国社会的写照。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+        
+        <div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/Les Misérables.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《悲惨世界》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【法】维克多▪雨果</p><br />
+                 <div class="show">
+                      "1802年，因偷取一块面包并数次企图越狱而被判处十九年苦役的冉·阿让结束了法国南部土伦苦役场的苦难生活。获释后前往指定城市的途中，疲惫困顿的冉·阿让推开了当地受人尊重的主教大人卞福汝的大门。好心的主教大人收留冉·阿让过夜，却不想被冉·阿让偷走银器潜逃。主教大人善意的谎言让冉·阿让幸免再次被捕。感于主教大人的恩惠，冉·阿让化名马德兰来到蒙特勒小城，从此洗心革面，重新做人。十年后，凭借一手办起的玻璃首饰生产工厂，冉·阿让成为一名成功的商人并当上市长。
+冉·阿让的相貌和救助平民的举动引起了警长沙威的注意。沙威是苦役场看守的儿子，曾经看见过冉·阿让。在处理芳汀的问题上，冉·阿让和沙威出现了意见上的分歧。淳朴善良的芳汀因受人[1] 欺骗而生下私生女珂赛特。如今，芳汀生命危在旦夕，唯一的愿望就是想看一眼寄养在孟费郡客店老板德纳第家的女儿珂赛特。在市长办公室里，听沙威说有一个名叫商马第的人正在替自己受审，冉·阿让经过激烈的思想斗争后，还是选择了投案自首。
+冉·阿让回到小城又去看望芳汀，被前来抓捕的沙威挑明苦役犯的身份。芳汀因病绝望地死去。冉·阿让又一次入狱，成为终身苦役。一次，他冒险救下一名水手，趁机跳入水中逃跑，并让人们以为他死了。冉·阿让来到德纳第客店，重金赎回珂赛特，带着珂赛特连夜赶往巴黎。珂赛特以冉·阿让女儿的名义进入贝内迪克修道院后，冉·阿让改名福施勒旺，在修道院当上了一名园丁。
+五年的园丁生活过去了。平静的生活因为贵族青年马吕斯看上了貌美如花的珂赛特而再起波澜。1830年，共和派青年马吕斯投身于轰轰烈烈的反对波旁王朝的人民起义中后，冉·阿让和此时靠在巴黎街头招摇撞骗为生的德纳第狭路相逢。德纳第设计陷害冉·阿让的阴谋正好被马吕斯听到，在调任巴黎就职的沙威带人来抓捕时，无赖之辈德纳第被捕入狱，而冉·阿让却在混乱中趁机逃走。[2] 
+尽管此后冉·阿让几次搬家，但在深爱着马吕斯的艾潘妮的帮助下，马吕斯最终找到了珂赛特。看着一对相爱的恋人，冉·阿让成全了两个年轻人美好姻缘。然而，当冉·阿让讲明珂赛特和自己的身世后，马吕斯却对冉·阿让拒而不见。虽然马吕斯夫妇最终认识到了自己的错误并跪在冉·阿让的床前忏悔，但冉·阿让已经奄奄一息了，他只是让那对小夫妻吻着他的手，走向了天国。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★★</span></p>
+               </div>
+            </div>
+        </div>
+        
+        <div id="clear"></div>   
+        
+     <div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/redmoment.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《红楼梦》（前80回）</a>
+                 <p class="author">&nbsp;&nbsp;作者:【中】曹雪芹</p><br />
+                 <div class="show">
+                      "中国古典四大名著之首，清代作家曹雪芹创作的章回体长篇小说 。早期仅有前八十回抄本流传，原名《石头记》。程伟元搜集到后四十回残稿，邀请高鹗协同整理出版百二十回全本 ，定名《红楼梦》。亦有版本作《金玉缘》《脂砚斋重评石头记》。
+《红楼梦》是一部具有世界影响力的人情小说作品，举世公认的中国古典小说巅峰之作，中国封建社会的百科全书，传统文化的集大成者。小说以贾、史、王、薛四大家族的兴衰为背景，以贾府的家庭琐事、闺阁闲情为中心，以贾宝玉、林黛玉、薛宝钗的爱情婚姻故事为主线，描写了以贾宝玉和金陵十二钗为中心的正邪两赋有情人的人性美和悲剧美，歌颂追求光明的叛逆人物，通过叛逆者的悲剧命运预见封建社会必然走向灭亡，揭示出封建末世危机。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/gunandhistory.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《枪炮、病菌与钢铁》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【美】 贾雷德·戴蒙德 </p><br />
+                 <div class="show">
+                      "为什么是欧亚大陆人征服、赶走或大批杀死印第安人、澳大利亚人和非洲人，而不是相反？为什么么小麦和玉米、牛和猪以及现代世界的其他一些"不了起的"作物和牲畜出现在这些特定地区，而不是其他地区？在这部开创性的著作中，演化生物学家贾雷德.戴蒙德揭示了事实上有助于形成历史最广泛模式的环境因素，从而以震撼人心的力量摧毁了以种族主义为基础的人类史理论，因其突出价值和重要性，本书荣获1998年美国普利策奖和英国科普书奖，并为《纽约时报》畅销书排行榜作品。
+本书是理解人类社会发展史方面的一个重大进展，它记录了现代世界及其诸多不平等所以形成的原因，也是一部真正关于全世界各民族的历史，是对人类生活的完整一贯的叙述，娓娓道来，具有很强的可读性。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/fg.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《梵高传》——对生活的渴求</a>
+                 <p class="author">&nbsp;&nbsp;作者:【美】欧文▪斯通</p><br />
+                 <div class="show">
+                      "荷兰画家温森特·梵高是19世纪人类最杰出的艺术家之一。他热爱生活，但在生活中屡遭挫折，艰辛备尝。他献身艺术，大胆创新，在广泛学习前辈画家伦勃朗等人的基础上，吸收印象派画家在色彩方面的经验，并受到东方艺术，特别是日本版画的影响，形成了自己独特的艺术风格，创作出许多洋溢着生活激情、富于人道主义精神的作品，表现了他心中的苦闷、哀伤、同情和希望，至今饮誉世界。
+被誉为传记小说之父的美国现代作家欧文·斯通，在梵高还默默无闻的时候便写出了这部文学传记，时年仅26岁。60余年来，梵高的身世打动了无数读者，其魅力至今犹在。这部作品也便成了作家的成名之作，并被译成80余种文字，发行数千万册。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/wxb.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《爱你就像爱生命》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【中】王小波 李银河</p><br />
+                 <div class="show">
+                      "王小波书信均选自朝华出版社2004年4月第一版《爱你就像爱生命》，此书系王小波生前从未发表过的与李银河的"两地书"，也是迄今他们夫妇最完整和独立的一本书信集。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/survive.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《活着》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【中】余华</p><br />
+                 <div class="show">
+                      "地主少爷富贵嗜赌成性，终于赌光了家业一贫如洗，穷困之中的富贵因为母亲生病前去求医，没想到半路上被国民党部队抓了壮丁，后被解放军所俘虏，回到家乡他才知道母亲已经去世，妻子家珍含辛茹苦带大了一双儿女，但女儿不幸变成了聋哑人，儿子机灵活泼……
+然而，真正的悲剧从此才开始渐次上演，每读一页，都让我们止不住泪湿双眼，因为生命里难得的温情将被一次次死亡撕扯得粉碎，只剩得老了的富贵伴随着一头老牛在阳光下回忆。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/xueguo.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《雪国》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【日】川端康成</p><br />
+                 <div class="show">
+                      "《雪国》以有钱有闲的舞蹈研究者岛村与一位艺妓和一位纯情少女之间的感情纠葛，为读者展现了一种哀怨和冷艳的世界。《古都》描写一对在贫富悬殊的家境中生长的孪生姐妹之间感人的悲欢离合的故事。《千只鹤》描写富家子弟菊治在不经意间与父亲生前的性人太田夫人发生肉体关系，而这段孽情最终导致了他所真正钟情的姑娘文子——太田夫人的女儿——自杀的悲剧。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/langchao.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《浪潮之巅》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【中】吴军</p><br />
+                 <div class="show">
+                      "近一百多年来，总有一些公司很幸运地、有意识或无意识地站在技术革命的浪尖之上。在这十几年间，它们代表着科技的浪潮，直到下一波浪潮的来临。
+从一百年前算起，AT&T 公司、IBM 公司、苹果公司、英特尔公司、微软公司、思科公司、雅虎公司和Google公司都先后被幸运地推到了浪尖。虽然，它们来自不同的领域，中间有些已经衰落或正在衰落，但是它们都极度辉煌过。本书系统地介绍了这些公司成功的本质原因及科技工业一百多年的发展。
+在极度商业化的今天，科技的进步和商机是分不开的。因此，本书也系统地介绍了影响到科技浪潮的风险投资公司，诸如 KPCB 和红杉资本，以及百年来为科技捧场的投资银行，例如高盛公司，等等。
+在这些公司兴衰的背后，有着它必然的规律。本书不仅讲述科技工业的历史，更重在揭示它的规律性。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>     
+
+
+<div class="rctli">
+            <div class="rctlileft">
+                <img src="../images/books/hlhz.jpg" width="180px" height="240px" id="rcimg" />
+            </div>
+            
+            <div class="rctliright">
+               <div class="anna">
+                 <a href="#">《呼兰河传》</a>
+                 <p class="author">&nbsp;&nbsp;作者:【中】萧红</p><br />
+                 <div class="show">
+                      "《呼兰河传》一部充满童心、诗趣和灵感的"回忆式"长篇小说。《呼兰河传》七章：一、二章写小城风情，三、四章谈家中亲疏人物，五、六、七章摹绘独立旁枝人物。作者用舒展自如的巡视式艺术手法，以情感的起伏为脉络，为"生于斯、长于斯的呼兰河畔的乡镇作传，为这个乡镇的风土人情，为各种各样人的生与死、欢乐与悲哀作传"。茅盾评价《呼兰河传》，是"一篇叙事诗，一幅多彩的风土画，一串凄婉的歌谣"。呼兰河小城的生活或许有一点沉闷，但无论是扎彩铺、放河灯、跳大神、娘娘庙会、野台子戏，还是北方大自然的风霜雨雪、火烧云，萧红用绘画式的语言，"在灰暗的日常生活背景前，呈现了粗线条的、大红大绿的带有原始性的色彩"，勾勒出一幕幕充满童趣的影像。"
+                 </div>
+                 <p class="showall">显示全部<span>&nbsp;∨</span></p>
+                 <p class="pstar">评分：<span class="star">★★★★</span></p>
+               </div>
+            </div>
+        </div>
+
+<div id="clear"></div>       
+        
+    </div>
+    
+
+    <div class="rctright">
+        <ul class="atstyle fixcategory">分类
+           <li class="rctrightli"><a href="#">文学</a></li>
+           <li class="rctrightli"><a href="#">历史</a></li>
+           <li class="rctrightli"><a href="#">哲学</a></li>
+           <li class="rctrightli"><a href="#">政治</a></li>
+           <li class="rctrightli"><a href="#">奇幻</a></li>
+           <li class="rctrightli"><a href="#">技术</a></li>
+           <li class="rctrightli"><a href="#">管理</a></li>
+           <li class="rctrightli"><a href="#">诗歌</a></li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

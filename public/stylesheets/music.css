@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,dd,dl,h1,h2.h3,h4.h5,h6{margin:0; padding:0; font-family:"微软雅黑", "新宋体", "幼圆";}
+body{background:#FFF;}
+a{text-decoration:none;}
+p{margin:0;}
+ul,li{margin:0; padding:0; list-style:none;}
+img{border:none;}
+.wrap{position:relative;}
+/*.headerimg{height:175px;}*/
+.rnav{text-align:right;}
+.rnav li{float:right;}
+.rnav a:link,.rnav a:visited{color:#000; font-size:18px; padding:16px 0 16px 32px;}
+.rnav a:hover,.readingnav a:active{color:#F60; background:none;}
+#now{color:#F60;}
+.rctleft{width:760px; float:left;}
+.rctright{width:199px; float:right; }
+.rctli{height:auto; border-bottom:1px #ECECEC solid; color:#000;}
+.rctlileft{float:left; width:180px;}
+#rcimg{margin:30px 0;}
+.rctliright{float:left; width:580px; position:relative;}
+.bod{border-bottom:1px #ECECEC solid;}
+.author{color:#999; font-size:16px;}
+.anna{margin:30px 16px;}
+.anna a:link,.anna a:visited{color:#F60; font-size:18px;}
+.anna a:hover,.anna a:active{color:#00F; text-decoration:underline;}
+.star{color:#F60;}
+.pstar{color:#999;}
+.showall{color:#F60; text-align:right; font-size:14px; cursor:pointer;}
+.showall span{color:#999; font-size:12px; font-weight:bold; padding:8px 0 0 2px;}
+.show{height:126px; overflow:hidden;}
+.fixcategory{border-bottom:2px #ECECEC solid; text-align:right; border-left:none;}
+.rctrightli a:link,.rctrightli a:visited{border-left:1px #ECECEC solid; height:50px; font-size:16px; line-height:50px; padding:17px 100px 17px 30px; color:#666; background-image:url(../images/music/bgmusic.png);}
+.rctrightli a:hover,.rctrightli a:active{border-right:4px #F60 solid; padding-right:20px; font-size:36px; z-index:10; position:relative; color:#F60; border-left:0;}
+.listen{float:right; font-size:14px; display:inline-block; padding-right:4px;}
+.listen a:link,.listen a:visited{color:#F60;}
+.listen a:hover,.listen a:active{text-decoration:none; color:#00F;}
+.cursorpointer{cursor:pointer;}
+.listenonclick{color:#F60; font-size:20px;}
+.audiocontrol{position:absolute; top:20px; left:200px; display:inline-block; width:300px; height:30px; visibility:hidden;}
+.audiostyle{font-size:20px; color:#F60;}
+.classes{color:#999; margin-left:200px;}
+/*.rctright iframe {
+	margin-top: 0px;
+	margin-left: -600px;
+}*/

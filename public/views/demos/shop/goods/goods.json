@@ -1,0 +1,49 @@
+{
+	"goodsinfo": [
+		{
+			"goodstitle": "苹果iphone6s(A1700)移动联通电信4G手机",
+			"goodsdescribe": "1200万像素照片、4k视频、Live Photos,还有生动如初的记忆。",
+			"goodsoldprice": "5888",
+			"goodsnewprice": "4888",
+			"goodsinventory": "1700",
+			"goodscolor": ["金色","银色","黑色","玫瑰"],
+			"goodscapacity": ["16G","64G","128G"],
+			"goodsmodel": ["A1700","A1586","A1699"]
+		}
+	],
+	"bannerImg": [
+		{
+			"bannerimgsrc": "../../../../images/demos/banner1.jpg",
+			"title": "title1"
+		},
+		{
+			"bannerimgsrc": "../../../../images/demos/banner2.jpg",
+			"title": "title2"
+		},
+		{
+			"bannerimgsrc": "../../../../images/demos/banner3.jpg",
+			"title": "title3"
+		}
+	],
+	"pricecount": [
+		{
+			"lists": {
+				"1:102|2:201|3:302":{"storage":"44","description":"","price":"9997","id":"1012"},
+				"1:101|2:201|3:302":{"storage":"54","description":"","price":"8999","id":"1011"},
+				"1:104|2:203|3:301":{"storage":"56","description":"","price":"5665","id":"1010"},
+				"1:103|2:203|3:301":{"storage":"66","description":"","price":"6888","id":"1009"},
+				"1:102|2:203|3:301":{"storage":"76","description":"","price":"2030","id":"1008"},
+				"1:101|2:203|3:301":{"storage":"87","description":"","price":"2020","id":"1007"},
+				"1:104|2:202|3:301":{"storage":"98","description":"","price":"2010","id":"1006"},
+				"1:103|2:202|3:301":{"storage":"45","description":"","price":"5288","id":"1005"},
+				"1:102|2:202|3:301":{"storage":"66","description":"","price":"2030","id":"1004"},
+				"1:101|2:202|3:301":{"storage":"100","description":"","price":"2090","id":"1003"},
+				"1:101|2:201|3:301":{"storage":"96","description":"","price":"2888","id":"1002"},
+				"1:104|2:201|3:301":{"storage":"34","description":"","price":"4998","id":"1001"},
+				"1:103|2:201|3:301":{"storage":"23","description":"","price":"4999","id":"1001"},
+				"1:102|2:201|3:301":{"storage":"43","description":"","price":"4888","id":"1001"},
+				"1:101|2:201|3:301":{"storage":"66","description":"","price":"5000","id":"1001"}
+			}
+		}
+	]
+}

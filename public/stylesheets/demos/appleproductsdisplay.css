@@ -1,0 +1,80 @@
+body, ol, ul, p, h1, h2, h3, h4 {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style: none; }
+
+body {
+  background-color: RGB(235, 235, 237); }
+
+p {
+  width: 960px;
+  margin: 50px auto 30px;
+  font-weight: bold; }
+
+.container {
+  width: 960px;
+  height: 200px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+  background: #FFFFFF;
+  border-color: #E5E5E5 #DBDBDB #D2D2D2;
+  border-style: solid;
+  border-width: 1px; }
+  .container a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #7F7F7F; }
+  .container .display-box {
+    width: 840px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden; }
+    .container .display-box .display {
+      width: 1680px;
+      height: 160px; }
+      .container .display-box .display li {
+        width: 140px;
+        height: 150px;
+        text-align: center;
+        margin: 5px 0 0 0;
+        float: left;
+        background-color: white;
+        color: #7F7F7F; }
+        .container .display-box .display li a {
+          text-decoration: none;
+          color: #7F7F7F; }
+          .container .display-box .display li a img {
+            width: 130px;
+            height: 130px; }
+        .container .display-box .display li a:hover {
+          color: #333; }
+  .container .controller {
+    height: 30px;
+    margin-top: 10px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#dfdfdf), color-stop(66%, #f2f2f2), color-stop(90%, #f2f2f2), color-stop(93%, #e6e6e6), color-stop(96%, #d2d2d2), to(#8c8c8c));
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #ebebeb; }
+    .container .controller .caret {
+      background: url(../../images/demos/caret_active.gif) no-repeat scroll 0 0;
+      display: block;
+      height: 8px;
+      margin: 0 0 -8px -7px;
+      position: absolute;
+      left: 420px;
+      width: 15px; }
+    .container .controller ul {
+      width: 198px;
+      margin: 0 auto; }
+      .container .controller ul li {
+        float: left;
+        margin: 6px 15px; }
+        .container .controller ul li a:hover {
+          color: #000; }
+        .container .controller ul li .show {
+          cursor: default;
+          color: #2B2B2B; }
+
+/*# sourceMappingURL=appleproductsdisplay.css.map */

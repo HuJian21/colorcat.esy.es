@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<title>商品详情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" href="../../../../stylesheets/demos/yyl.css" />
+<script src="../../../../javascripts/lib/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../../../../javascripts/lib/vue.js"></script>
+<script src="../../../../javascripts/lib/jquery.Slider.js"></script>
+<script type="text/javascript">
+	$(function(){
+	//焦点图
+	$(".goods_foucs").MobileSlider({width:720,height:720});
+});
+</script>
+</head>
+<body id="test2">
+<header class="header_box">
+	<div class="header">
+		<div class="header_goback">
+			<a href="list.html">返回</a>
+		</div>
+		<h1 class="header_title">商品详情</h1>
+	</div>
+</header>
+<section class="goods_foucs">
+	<ul>
+		<li><img v-bind:src="bannerImg[0].bannerimgsrc" alt="title1"></li>
+		<li><img v-bind:src="bannerImg[1].bannerimgsrc" alt="title2"></li>
+		<li><img v-bind:src="bannerImg[2].bannerimgsrc" alt="title3"></li>
+	</ul>
+</section>
+<section class="goods_btn">
+	<!-- 拨打客服电话 -->
+	<a href="tel:4000000000" class="tel_btn">电话客服</a>
+	<!-- 商品收藏,如果已经收藏,class为 class="good_collection on" -->
+	<span id="good_collection" class="good_collection">收藏此商品</span>
+	<!-- 购物车按钮,em{3}中,3为购物车内商品的数量 如果没有,则为0 -->
+	<a href="" class="cart_btn">购物车<em>3</em></a>
+</section>
+<section class="good_info">
+	<header class="good_info_title">
+		<h1>{{goodsinfo[0].goodstitle}}</h1>
+		<p>{{goodsinfo[0].goodsdescribe}}</p>
+		<em class="price">¥{{goodsinfo[0].goodsnewprice}}</em><del class="delprice">¥{{goodsinfo[0].goodsoldprice}}</del>
+	</header>
+	<section class="goods_tip">
+		<p><em class="fr">库存:<span>{{goodsinfo[0].goodsinventory}}</span>件</em>预计3-7个工作日送达</p>
+		<p><i>正品行货</i><i>时效保证</i></p>
+		<p>
+			<strong>要盈利承担运费</strong>
+			<strong>本商品不支持货到付款</strong>
+			<strong>本商品如无质量问题，不支持退换货</strong>
+		</p>
+	</section>
+	<section id="see_more" class="see_more">查看更多详情</section>
+</section>
+<section id="goods_panel" class="goods_panel">
+	<div class="goods_panel_box">
+		<header class="goods_panel_header">
+			<img src="/res/image/banner1.jpg" alt="title1">
+			<p>
+				<em class="js-goods_price">¥5888</em><br>
+				库存:<span class="js-goods_storage">190</span>件<br>
+				合计:<strong class="all_price">4888.00</strong>元
+			</p>
+			<del id="goods_panel_close" class="close">关闭</del>
+		</header>
+		<section class="good_type">
+			<dl id="vue_goodsinfo">
+				<dt>颜色</dt>
+				<dd>
+					<span v-bind:value="'1:10' + ($index + 1)" v-bind:class="$index === 0 ? 'on' : ''" v-on:click="changeStyle" v-for="color in goodsinfo[0].goodscolor">{{color}}</span>
+				</dd>
+			</dl>
+			<dl>
+				<dt>容量</dt>
+				<dd>
+					<span v-bind:value="'2:20' + ($index + 1)"v-bind:class="$index === 0 ? 'on' : ''" v-on:click="changeStyle" v-for="capacity in goodsinfo[0].goodscapacity">{{capacity}}</span>
+				</dd>
+			</dl>
+			<dl>
+				<dt>型号</dt>
+				<dd>
+					<span v-bind:value="'3:30' + ($index + 1)" v-bind:class="$index === 0 ? 'on' : ''" v-on:click="changeStyle" v-for="model in goodsinfo[0].goodsmodel">{{model}}</span>
+				</dd>
+			</dl>
+			<dl>
+				<dt>数量</dt>
+				<dd>
+					<div id="vue-pircecount" class="quantity">
+						<em class="sub" v-on:click="numberReduce">-</em>
+						<!-- mark－o:用Vue进行数据绑定 -->
+						<input v-on:keyup="numberBind" class="num" type="number" v-bind:value="goods_number">
+						<em class="add" v-on:click="numberAdd">+</em>
+					</div>
+				</dd>
+			</dl>
+		</section>
+		<footer class="goods_panel_footer">
+			<div id="add_cart" class="add_cart">确定</div>
+		</footer>
+	</div>
+	<div class="goods_panel_bg"></div>
+</section>
+<section id="good_details" class="good_details"></section>
+<div class="btn_bottom">
+	<!-- input或div或a 均可 只要 class="btn_submit" -->
+	<div v-on:click="priceCount" id="show_panel_btn" class="btn_submit pink">添加购物车</div>
+</div>
+<script>
+$(function(){
+	//获取服务器数据
+	$.ajax({
+		type: "get",
+		dataType: "json",
+		url: "goods.json?id=xxx",
+		success: function (data) {
+			innerData(data);
+		},
+		error: function () {
+			console.log("连接失败");
+		}
+	});
+
+	var test = null;
+	//处理数据
+	function innerData(dataJson) {
+		test = new Vue({
+			el: '#test2',
+			data: dataJson,
+			methods: {
+				//选择项目
+				changeStyle: function (event) {
+					$(event.target).addClass('on').siblings().removeClass('on');
+					//选中item时重新匹配单价和总价格
+					this.priceCount();
+					var maxnumber = parseInt($('.js-goods_storage').html(),10);
+					if (priceCountObj.goods_number >= maxnumber) {
+						priceCountObj.goods_number = maxnumber;
+					}
+					priceCountObj.allPrice();
+				},
+				//价格匹配
+				priceCount: function (event) {
+					//设置被选中的项目为数组    
+					selectedItems = [];  //注意！这是一个全局变量！
+					//遍历被选中的项目并将其value属性的值加入数组
+					$('.on').each(function (index) {
+						selectedItems.push($(this).attr('value'));
+					});
+					//对数组排序
+					selectedItems.sort();
+					//加入分隔符用于匹配
+					var key = selectedItems.join('|');
+					$('.js-goods_price').html('¥' + this.pricecount[0]["lists"][key]["price"]);
+					$('.js-goods_storage').html(this.pricecount[0]["lists"][key]["storage"]);
+					//初始化页面的总价格
+					priceCountObj.allPrice();
+				}
+			}
+		});
+	}
+
+	// 数量价格计算
+	var priceCountObj = new Vue({
+		el: "#vue-pircecount",
+		data: {
+			goods_number: 1
+		},
+		methods: {
+			//数量减少
+			numberReduce: function (event) {
+				this.goods_number--;
+
+				if (this.goods_number <= 1) {
+					this.goods_number = 1;
+				}
+
+				this.allPrice();
+			},
+			//数量增加
+			numberAdd: function (event) {
+				this.goods_number++;
+				var maxnumber = parseInt($('.js-goods_storage').html(),10);
+				if (this.goods_number >= maxnumber) {
+					this.goods_number = maxnumber;
+					event.target.value = maxnumber;
+				}
+				this.allPrice();
+			},
+			//用户输入数据绑定(键盘按下时)
+			numberBind: function (event) {
+				var maxnumber = parseInt($('.js-goods_storage').html(),10);
+				//使购买数量不大于库存数量
+				this.goods_number = parseInt(event.target.value,10);
+				if (this.goods_number >= maxnumber) {
+					this.goods_number = maxnumber;
+					event.target.value = maxnumber;
+				}
+				this.allPrice();
+			},
+			//商品总价计算
+			allPrice: function () {
+				var unitPrice = $('.js-goods_price').html();
+				var strLen = unitPrice.length;
+				//分割字符串去掉¥用于计算价格
+				unitPrice = parseInt(unitPrice.slice(1,strLen),10);
+				//商品总价
+				newAllPrice = this.goods_number * unitPrice;  //注意！这是一个全局变量！
+				$('.all_price').html(newAllPrice + '.00');
+			}
+		}
+	});
+
+
+	// 提交数据
+	var timers = null;
+	$('#add_cart').on('click', function () {
+		var shopObj = {
+			selected: selectedItems,
+			number: priceCountObj.goods_number,
+			allprice: newAllPrice
+		};
+		// 延迟提交和清楚定时器防止重复提交
+		clearTimeout(timers);
+		timers = setTimeout(submitMsg,500);
+		function submitMsg() {
+			$.ajax({
+				type: 'post',
+				data: JSON.stringify(shopObj),
+				url: 'www.xxx.com',
+				success: function (data) {
+					console.log(data.msg);
+				},
+				error: function (data) {
+					// console.log(data.msg);
+				}
+			});
+			console.log(JSON.stringify(shopObj));
+		}
+	});
+
+	// 显示隐藏商品详情代码开始
+	var seeBtn = $("#see_more"),
+		gooDet = $("#good_details"),
+		gooDetSh = seeBtn.offset().top;
+	var detUrl = "goods_details.html";
+	var openStr = "查看商品详情",
+		offStr = "收起商品详情";
+	seeBtn.on('click',function(){
+		var open = $(this).data('open');
+		if (open == undefined) {
+			gooDet.show();
+			gooDet.css('minHeight', "700px");
+			$(window).scrollTop(gooDetSh);
+			loading(gooDet);
+			$.ajax( {  
+				url:detUrl,
+				cache:true,
+				success:function(data) {  
+					gooDet.load(detUrl,function(){
+						seeBtn.data('open','1').html(offStr);
+					});
+				},
+				error : function(){
+					alert("商品详情加载失败,请重试!");
+					gooDet.hide();
+				}
+			});
+
+		} else if (open == 1){
+			$(window).scrollTop(0);
+			seeBtn.data('open','2').html(openStr);
+			gooDet.hide();
+		} else if(open == 2){
+			seeBtn.data('open','1').html(offStr);
+			gooDet.show();
+			$(window).scrollTop(gooDetSh);
+		};
+	});
+	// 显示隐藏商品详情代码结束
+	// 显示隐藏商品条件选择面板开始
+	var ShowPanelBtn = $("#show_panel_btn"),
+		ClosePanelBtn = $("#goods_panel_close"),
+		PanelBox = $("#goods_panel");
+	ShowPanelBtn.on('click',function(){
+		PanelBox.show();
+	});
+	ClosePanelBtn.on('click',function(){
+		PanelBox.hide();
+	});
+	// 显示隐藏商品条件选择面板结束
+})
+</script>
+</body>
+</html>

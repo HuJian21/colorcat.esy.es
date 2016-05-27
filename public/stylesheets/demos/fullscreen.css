@@ -1,0 +1,119 @@
+body, ol, ul, li, h2, h3, p, ul, ol {
+  margin: 0;
+  padding: 0; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+.container, .container div, .container div img, .container .content {
+  width: 100%;
+  height: 100%; }
+
+.container {
+  overflow: hidden; }
+  .container .content {
+    overflow: hidden;
+    position: absolute; }
+    .container .content #animate-layer {
+      background-color: black; }
+
+.controller {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: -webkit-linear-gradient(top, RGBA(73, 73, 75, 0.7), RGBA(14, 7, 6, 0.7));
+  z-index: 10;
+  border-top: 1px solid RGB(173, 171, 179); }
+  .controller .controller-picprev {
+    position: absolute;
+    bottom: 12px;
+    width: 100px;
+    height: 80px;
+    border: 2px white solid;
+    left: 20px; }
+  .controller .controller-picnext {
+    position: absolute;
+    bottom: 12px;
+    width: 100px;
+    height: 80px;
+    border: 2px white solid;
+    right: 20px; }
+  .controller .controller-numbernow, .controller .controller-next, .controller .controller-play, .controller .controller-prev, .controller .controller-modal {
+    position: absolute;
+    bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: RGB(228, 228, 228);
+    cursor: pointer; }
+  .controller .controller-numbernow {
+    left: 140px; }
+  .controller .controller-next {
+    right: 160px; }
+  .controller .controller-play {
+    right: 200px; }
+  .controller .controller-prev {
+    right: 240px; }
+  .controller .controller-modal {
+    right: 280px; }
+
+.modal {
+  width: 50%;
+  height: 430px;
+  position: absolute;
+  left: 25%;
+  top: 12.5%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px white;
+  cursor: pointer; }
+  .modal .modal-title {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    margin: 4px 0 0 20px;
+    cursor: default; }
+  .modal span {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 24px;
+    background-color: RGB(150, 28, 60);
+    line-height: 24px;
+    text-align: center; }
+  .modal div {
+    width: 675px;
+    margin: 0 auto;
+    position: absolute;
+    left: 20px;
+    top: 20px; }
+    .modal div li {
+      float: left;
+      margin: 20px 20px 0 0;
+      border: 3px white solid;
+      width: 140px;
+      height: 90px; }
+      .modal div li img {
+        width: 140px;
+        height: 90px; }
+  .modal .modal-copyright, .modal .modal-help {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    bottom: 8px;
+    right: 20px; }
+  .modal .modal-help {
+    left: 40px; }
+
+/*# sourceMappingURL=fullscreen.css.map */

@@ -1,0 +1,85 @@
+{
+	"mobileinfos": [
+		{
+			"goods_name" :"小米5",
+			"goods_info": "A1700",
+			"goods_price": "2679.00",
+			"goods_imgsrc": "../../../../images/demos/goods.jpg"
+		},
+		{
+			"goods_name" :"小米4S",
+			"goods_info": "A1300",
+			"goods_price": "1679.00",
+			"goods_imgsrc": "../../../../images/demos/goods.jpg"
+		},
+		{
+			"goods_name" :"iPhone SE",
+			"goods_info": "A1123",
+			"goods_price": "3288.00",
+			"goods_imgsrc": "../../../../images/demos/goods.jpg"
+		},
+		{
+			"goods_name" :"华为Mate8",
+			"goods_info": "I9600",
+			"goods_price": "3279.00",
+			"goods_imgsrc": "../../../../images/demos/goods.jpg"
+		},
+		{
+			"goods_name" :"Moto X",
+			"goods_info": "I9300",
+			"goods_price": "1379.00",
+			"goods_imgsrc": "../../../../images/demos/goods.jpg"
+		}
+	],
+	"bannerImg": [
+		{
+			"bannerimgsrc": "/res/image/banner1.jpg",
+			"title": "title1"
+		},
+		{
+			"bannerimgsrc": "/res/image/banner2.jpg",
+			"title": "title2"
+		},
+		{
+			"bannerimgsrc": "/res/image/banner3.jpg",
+			"title": "title3"
+		}
+	],
+	"shop_screen": [
+		{
+			"brandnames": [
+					{"brandname": "诺基亚"},
+					{"brandname": "苹果"},
+					{"brandname": "小米"},
+					{"brandname": "三星"},
+					{"brandname": "华为"},
+					{"brandname": "联想"},
+					{"brandname": "魅族"},
+					{"brandname": "摩托罗拉"}
+			],
+			"goods_price": [
+				{"price": "0-499"},
+				{"price": "499-999"},
+				{"price": "999-1499"},
+				{"price": "1499-1999"},
+				{"price": "1999-2999"},
+				{"price": "2999-4999"},
+				{"price": "4999以上"}
+			],
+			"network": [
+				{"network": "2G"},
+				{"network": "3G"},
+				{"network": "4G"},
+				{"network": "4G+"}
+			],
+			"mtc": [
+				{"mtc": "移动"},
+				{"mtc": "联通"},
+				{"mtc": "电信"}
+			],
+			"contractMobile": [
+				{"mobile": "iPhone6s"}
+			]
+		}
+	]
+}

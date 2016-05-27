@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas tank</title>
+	<style>
+	    body {
+	    	background-color: RGB(235,235,237);
+	    }
+		#tankmap{background-color: black;}
+		div{width: 400px; height: 400px; margin: 0 auto;}
+		div p {
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="../../javascripts/lib/myfunction.js"></script>
+	<script type="text/javascript" src="../../javascripts/demos/tank.js"></script>
+	<script>
+	window.onload = function () {
+
+		// 搭建画布环境
+		var tank = document.getElementById('tankmap');
+		ctx = tank.getContext('2d');
+
+		var timer = 0;
+	
+        // 实例化坦克Hero
+        var hero = new Hero(120,220,0,0.5,heroColor);
+        // 实例化坦克Enemy
+        var enemyTanks = [];
+        for (var i = 0;i<5;i++) {
+        	var enemyTank = new Enemy((i+1)*50,0,2,1,enemyColor);
+        	enemyTanks[i] = enemyTank;
+        }
+
+        flashMap();
+
+// 不断的重新绘制地图
+        function flashMap() {
+
+        	// 清除画布
+        	ctx.clearRect(0,0,400,400);
+
+        	// 绘制坦克Hero
+        	drawTank(hero);
+
+        	// 绘制坦克Emeny
+        	for (var i = 0;i<5;i++) {
+        		drawTank(enemyTanks[i]);
+        	}
+        }
+// 重复绘制，60帧
+        setInterval(flashMap,1000/60);
+
+
+        // 移动坦克控制，按键响应
+		document.onkeydown = function tankMove(event) {
+			clearInterval(timer);
+
+			var oEvent = EventUtil.getEvent();
+
+			switch (oEvent.keyCode) {
+				case 65:
+				    //合并语句
+				case 37:
+					timer = setInterval(function () {
+						hero.moveLeft();		
+					},2);
+					break;
+				case 87:
+				    //合并语句
+				case 38:
+					timer = setInterval(function () {
+						hero.moveTop();
+					},2);
+					break;
+				case 68:
+					//合并语句
+				case 39:
+					timer = setInterval(function () {
+						hero.moveRight();
+					},2);
+					break;
+				case 83:
+					//合并语句
+				case 40:
+					timer = setInterval(function () {
+						hero.moveDown();
+					},2);
+					break;
+			}
+			
+		}
+
+		document.onkeyup = function () {
+			clearInterval(timer);
+		}
+
+		
+	}
+	</script>
+</head>
+<body>
+<div>
+    <h2>经典坦克大战</h2>
+	<canvas width="400"; height="400" id="tankmap"></canvas>
+	<p>仅能上下左右移动</p>
+	<p>（按下方向键或W、A、S、D移动）</p>
+</div>
+</body>
+</html>
