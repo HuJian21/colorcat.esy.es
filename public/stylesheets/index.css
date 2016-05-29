@@ -105,15 +105,17 @@ p{
 }
 .nav .logo {
 	font-family: "华文行楷";
-	font-size: 60px;
-	color: RGB(217,153,91);
+	font-size: 52px;
+	color: #F60;
 	display: block;
 	float: left;
 	margin-left: 40px;
 	text-align: center;
 	margin-top: 6px;
 	margin-left: 200px;
-	font-weight: bold;
+	padding: 8px;
+	background: rgba(255,255,255,.1);
+	border-radius: 20px;
 }
 .nav .logo .logo-color-0 {
 	color: RGB(245,55,57);
